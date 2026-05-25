@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>店內營運選擇</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="checklist">
+
+<header>
+  <div class="container navbar">
+    <a class="brand" href="index.html">從種子到杯中，減碳在手中</a>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">首頁</a>
+      <a href="why-carbon.html">為什麼要減碳</a>
+      <a href="carbon-elements.html">碳排元素</a>
+      <a href="carbon-basics.html">基礎知識</a>
+      <a href="checklist.html">店內營運選擇</a>
+      <a href="action-plan.html">咖啡製作模擬</a>
+      <a href="about.html">教材介紹</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>單元 4：店內營運選擇</h2>
+      <p>先從整間店的營運角度，選擇店內要採取的減碳行動，並確認這些選擇會產生多少費用。</p>
+    </div>
+
+    <!-- 學習進度條 -->
+    <div class="card reveal">
+      <h3>整體學習進度</h3>
+      <div class="progress-wrap">
+        <div class="progress-bar" id="globalProgress" style="width:0%;"></div>
+      </div>
+      <div style="height:12px"></div>
+      <div id="globalProgressText" class="summary-box">
+        目前完成 0 / 4 個重點學習活動，進度 0%。互動評估分數：0。
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="section-title">
+        <div>
+          <h3>單元四費用確認</h3>
+          <p>這一關會先確認店內營運選擇的費用，之後帶到單元五繼續製作咖啡。</p>
+        </div>
+        <div class="score-chip">目前花費：NT$ <span id="storeBudgetSpent">0</span></div>
+      </div>
+      <div id="storeScenarioInfo" class="summary-box">
+        尚未確認店內營運選擇。
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="section-title">
+        <h2>1. 照明管理</h2>
+        <p>店內燈光安排會影響整體耗能。</p>
+      </div>
+      <div class="choice-list">
+        <button class="choice-btn" id="store-light-basic" onclick="selectStoreOption('lighting','light_basic')">維持目前照明方式</button>
+        <button class="choice-btn" id="store-light-led" onclick="selectStoreOption('lighting','light_led')">局部改成 LED 燈具</button>
+        <button class="choice-btn" id="store-light-smart" onclick="selectStoreOption('lighting','light_smart')">全面 LED ＋分區開關管理</button>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="section-title">
+        <h2>2. 空調管理</h2>
+        <p>冷氣是店面營運中的重要耗能來源。</p>
+      </div>
+      <div class="choice-list">
+        <button class="choice-btn" id="store-ac-basic" onclick="selectStoreOption('ac','ac_basic')">維持目前空調方式</button>
+        <button class="choice-btn" id="store-ac-temp" onclick="selectStoreOption('ac','ac_temp')">設定固定溫度與時段控制</button>
+        <button class="choice-btn" id="store-ac-upgrade" onclick="selectStoreOption('ac','ac_upgrade')">提升空調效率與門市管理</button>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="section-title">
+        <h2>3. 冷藏設備</h2>
+        <p>冰箱與冷藏設備長時間運轉，會累積穩定排放。</p>
+      </div>
+      <div class="choice-list">
+        <button class="choice-btn" id="store-fridge-basic" onclick="selectStoreOption('fridge','fridge_basic')">維持目前設備方式</button>
+        <button class="choice-btn" id="store-fridge-maintain" onclick="selectStoreOption('fridge','fridge_maintain')">定期保養與溫度管理</button>
+        <button class="choice-btn" id="store-fridge-upgrade" onclick="selectStoreOption('fridge','fridge_upgrade')">提升冷藏效率與設備配置</button>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="section-title">
+        <h2>4. 配送制度</h2>
+        <p>原料進貨與配送頻率，會影響整體物流排放。</p>
+      </div>
+      <div class="choice-list">
+        <button class="choice-btn" id="store-delivery-basic" onclick="selectStoreOption('delivery','delivery_basic')">維持目前配送方式</button>
+        <button class="choice-btn" id="store-delivery-weekly" onclick="selectStoreOption('delivery','delivery_weekly')">改成固定週配</button>
+        <button class="choice-btn" id="store-delivery-batch" onclick="selectStoreOption('delivery','delivery_batch')">改成集中配送與減少次數</button>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="section-title">
+        <h2>5. 包材制度</h2>
+        <p>外帶杯、吸管、袋子與外送包裝都會形成額外排放。</p>
+      </div>
+      <div class="choice-list">
+        <button class="choice-btn" id="store-pack-basic" onclick="selectStoreOption('packaging','pack_basic')">維持目前包材方式</button>
+        <button class="choice-btn" id="store-pack-reduce" onclick="selectStoreOption('packaging','pack_reduce')">精簡包材與不主動提供吸管</button>
+        <button class="choice-btn" id="store-pack-reuse" onclick="selectStoreOption('packaging','pack_reuse')">推自備杯與低包材制度</button>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="section-title">
+        <h2>6. 員工通勤與排班</h2>
+        <p>通勤方式與排班規劃也屬於容易被忽略的間接碳排。</p>
+      </div>
+      <div class="choice-list">
+        <button class="choice-btn" id="store-staff-basic" onclick="selectStoreOption('staff','staff_basic')">維持目前通勤與排班方式</button>
+        <button class="choice-btn" id="store-staff-transit" onclick="selectStoreOption('staff','staff_transit')">鼓勵員工搭大眾運輸</button>
+        <button class="choice-btn" id="store-staff-schedule" onclick="selectStoreOption('staff','staff_schedule')">集中排班與近距離人力配置</button>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <h3>目前選擇狀況</h3>
+      <div id="storeSelectionStatus" class="summary-box">
+        目前尚未完成所有營運選擇。
+      </div>
+
+      <div style="height:16px"></div>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="finishStoreChecklist()">確認單元四費用</button>
+        <button class="btn btn-secondary" onclick="resetStoreChecklist()">重新選擇</button>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <h3>單元四費用結果</h3>
+      <div id="storeResultBox" class="summary-box">
+        完成所有項目後，再確認店內營運費用。
+      </div>
+    </div>
+
+    <!-- 完成後才出現 -->
+    <div class="hero-actions reveal" id="aboutAfterFinish" style="display:none;">
+      <a class="btn btn-primary" href="action-plan.html">下一頁：咖啡製作模擬</a>
+      <a class="btn btn-secondary" href="action-plan.html">前往單元五</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p><strong>從種子到杯中，減碳在手中</strong></p>
+    <p>給咖啡廳管理層的互動式碳排學習平台。</p>
+    <p>本網站有使用 ChatGPT 工具製作。</p>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

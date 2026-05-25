@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>從種子到杯中，減碳在手中</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="index">
+
+<header>
+  <div class="container navbar">
+    <a class="brand" href="index.html">從種子到杯中，減碳在手中</a>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">首頁</a>
+      <a href="why-carbon.html">為什麼要減碳</a>
+      <a href="carbon-elements.html">碳排元素</a>
+      <a href="carbon-basics.html">基礎知識</a>
+      <a href="checklist.html">店內營運選擇</a>
+      <a href="action-plan.html">咖啡製作模擬</a>
+      <a href="about.html">教材介紹</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <span class="badge">咖啡廳碳排認知與減碳行動教學平台</span>
+        <h1>從種子到杯中，<br>減碳在手中</h1>
+        <p>這是一個給咖啡廳管理層的互動學習平台，幫你快速看懂碳排熱點、經營選擇與未來可能面對的碳成本壓力。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="why-carbon.html">開始學習</a>
+          <a class="btn btn-secondary" href="#question-start">先看互動引導</a>
+        </div>
+      </div>
+
+      <div class="hero-card reveal">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="auto" style="border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: block; background-color: #FFFFFF;">
+          <defs>
+            <!-- Gradients -->
+            <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#EEDCAE"/>
+              <stop offset="100%" stop-color="#D4B473"/>
+            </linearGradient>
+            <linearGradient id="counterGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#5D4037"/>
+              <stop offset="100%" stop-color="#3E2723"/>
+            </linearGradient>
+            <linearGradient id="silverGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#FFFFFF"/>
+              <stop offset="25%" stop-color="#E0E0E0"/>
+              <stop offset="50%" stop-color="#F5F5F5"/>
+              <stop offset="75%" stop-color="#9E9E9E"/>
+              <stop offset="100%" stop-color="#EEEEEE"/>
+            </linearGradient>
+            <linearGradient id="signGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FDE0B2"/>
+              <stop offset="100%" stop-color="#E8C37C"/>
+            </linearGradient>
+            
+            <!-- Filters -->
+            <filter id="softShadow" x="-10%" y="-10%" width="120%" height="130%">
+              <feDropShadow dx="0" dy="6" stdDeviation="6" flood-opacity="0.15"/>
+            </filter>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="4" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            
+            <!-- Frame Clip -->
+            <clipPath id="frameClip">
+              <rect x="20" y="20" width="760" height="560" rx="24"/>
+            </clipPath>
+          </defs>
+
+          <g clip-path="url(#frameClip)">
+            <!-- Light Yellow Wall -->
+            <rect x="20" y="20" width="760" height="560" fill="#FFFDE7"/>
+
+            <!-- Light Wooden Plank Floor -->
+            <rect x="20" y="380" width="760" height="200" fill="url(#floorGrad)"/>
+            <!-- Horizontal Planks -->
+            <path d="M20,410 L780,410 M20,440 L780,440 M20,470 L780,470 M20,500 L780,500 M20,530 L780,530 M20,560 L780,560" stroke="#C5A467" stroke-width="1.5" opacity="0.8"/>
+            <!-- Perspective Planks -->
+            <path d="M150,380 L100,580 M300,380 L280,580 M450,380 L450,580 M600,380 L620,580 M750,380 L800,580" stroke="#C5A467" stroke-width="1.5" opacity="0.8"/>
+
+            <!-- Mint-Green Air Conditioner -->
+            <g transform="translate(40, 40)" filter="url(#softShadow)">
+              <rect width="130" height="45" rx="8" fill="#B2DFDB"/>
+              <rect x="10" y="10" width="110" height="8" rx="2" fill="#80CBC4"/>
+              <rect x="10" y="22" width="110" height="8" rx="2" fill="#80CBC4"/>
+              <line x1="10" y1="38" x2="120" y2="38" stroke="#009688" stroke-width="2" opacity="0.5"/>
+              <circle cx="115" cy="15" r="2" fill="#00E676" filter="url(#glow)"/>
+            </g>
+            <!-- Airflow Indications -->
+            <path d="M60,95 Q70,115 60,135 M90,95 Q100,115 90,135 M120,95 Q130,115 120,135 M150,95 Q160,115 150,135" stroke="#B2DFDB" stroke-width="2.5" stroke-dasharray="6,4" fill="none" opacity="0.7"/>
+
+            <!-- Refined Wooden Sign -->
+            <g transform="translate(400, 70)" filter="url(#softShadow)">
+              <rect x="-140" y="-30" width="280" height="60" rx="12" fill="url(#signGrad)"/>
+              <rect x="-135" y="-25" width="270" height="50" rx="8" fill="none" stroke="#8D6E63" stroke-width="2" opacity="0.5"/>
+              <text x="0" y="8" font-family="'Dancing Script', 'Brush Script MT', cursive, sans-serif" font-size="34" font-weight="bold" fill="#3E2723" text-anchor="middle">Green Bean Café</text>
+            </g>
+
+            <!-- Industrial Pendant Lights -->
+            <g transform="translate(200, 20)">
+              <line x1="0" y1="0" x2="0" y2="90" stroke="#424242" stroke-width="3"/>
+              <path d="M-25,90 L25,90 L30,120 L-30,120 Z" fill="#212121" filter="url(#softShadow)"/>
+              <circle cx="0" cy="125" r="10" fill="#FFCA28" filter="url(#glow)"/>
+              <circle cx="0" cy="125" r="5" fill="#FFF8E1"/>
+            </g>
+            <g transform="translate(600, 20)">
+              <line x1="0" y1="0" x2="0" y2="90" stroke="#424242" stroke-width="3"/>
+              <path d="M-25,90 L25,90 L30,120 L-30,120 Z" fill="#212121" filter="url(#softShadow)"/>
+              <circle cx="0" cy="125" r="10" fill="#FFCA28" filter="url(#glow)"/>
+              <circle cx="0" cy="125" r="5" fill="#FFF8E1"/>
+            </g>
+
+            <!-- Retro Mint-Green Refrigerator -->
+            <g transform="translate(630, 110)" filter="url(#softShadow)">
+              <rect width="120" height="270" rx="16" fill="#A7FFEB"/>
+              <rect x="8" y="8" width="104" height="150" rx="8" fill="#84FFFF"/>
+              <rect x="8" y="166" width="104" height="96" rx="8" fill="#84FFFF"/>
+              <rect x="100" y="0" width="20" height="270" rx="16" fill="#000000" opacity="0.04"/>
+              <!-- Silver Handles -->
+              <rect x="16" y="80" width="6" height="45" rx="3" fill="url(#silverGrad)"/>
+              <rect x="16" y="180" width="6" height="35" rx="3" fill="url(#silverGrad)"/>
+              <!-- Icons: Cup, Bean, Leaf -->
+              <g transform="translate(60, 30)">
+                <path d="M0,0 L12,0 L10,12 L2,12 Z" fill="#00BFA5"/>
+                <path d="M12,2 Q16,2 16,6 Q16,9 11,9" fill="none" stroke="#00BFA5" stroke-width="2"/>
+              </g>
+              <g transform="translate(60, 60)">
+                <path d="M2,-2 C10,-10 18,-2 14,6 C6,14 -2,6 2,-2 Z" fill="#00BFA5"/>
+                <path d="M3,0 Q8,4 10,7" stroke="#84FFFF" stroke-width="1.5" fill="none"/>
+              </g>
+              <g transform="translate(60, 95)">
+                <path d="M0,0 Q12,-8 14,4 Q4,12 0,0 Z" fill="#00BFA5"/>
+              </g>
+            </g>
+
+            <!-- Stylized Green Bin with Diamond-Star Pattern -->
+            <g transform="translate(560, 270)" filter="url(#softShadow)">
+              <path d="M5,0 L55,0 L48,110 L12,110 Z" fill="#66BB6A"/>
+              <rect x="0" y="-8" width="60" height="12" rx="4" fill="#4CAF50"/>
+              <g fill="#A5D6A7" opacity="0.6">
+                <polygon points="30,15 35,25 30,35 25,25"/>
+                <polygon points="20,40 25,50 20,60 15,50"/>
+                <polygon points="40,40 45,50 40,60 35,50"/>
+                <polygon points="30,65 35,75 30,85 25,75"/>
+                <polygon points="20,90 25,100 20,110 15,100"/>
+                <polygon points="40,90 45,100 40,110 35,100"/>
+              </g>
+            </g>
+
+            <!-- Left Counter (Cups) -->
+            <g transform="translate(50, 260)" filter="url(#softShadow)">
+              <rect width="150" height="130" rx="6" fill="url(#counterGrad)"/>
+              <rect width="150" height="15" rx="4" fill="#EFEBE9"/>
+              <rect y="115" width="150" height="15" rx="4" fill="#3E2723"/>
+              <!-- Wavy grain texture -->
+              <g fill="none" stroke="#3E2723" stroke-width="2" opacity="0.6">
+                <path d="M 0,30 Q 30,20 60,40 T 150,30" />
+                <path d="M 0,50 Q 50,40 80,60 T 150,50" />
+                <path d="M 0,70 Q 40,80 90,60 T 150,80" />
+                <path d="M 0,90 Q 60,100 100,80 T 150,95" />
+              </g>
+            </g>
+
+            <!-- Right/Center Counter (Espresso Machine) -->
+            <g transform="translate(230, 260)" filter="url(#softShadow)">
+              <rect width="310" height="130" rx="6" fill="url(#counterGrad)"/>
+              <rect width="310" height="15" rx="4" fill="#EFEBE9"/>
+              <rect y="115" width="310" height="15" rx="4" fill="#3E2723"/>
+              <!-- Wavy grain texture -->
+              <g fill="none" stroke="#3E2723" stroke-width="2" opacity="0.6">
+                <path d="M 0,30 Q 80,10 160,40 T 310,25" />
+                <path d="M 0,50 Q 100,60 180,40 T 310,65" />
+                <path d="M 0,70 Q 120,50 200,80 T 310,60" />
+                <path d="M 0,90 Q 90,110 170,85 T 310,105" />
+                <path d="M 0,110 Q 110,95 220,115 T 310,100" />
+              </g>
+            </g>
+
+            <!-- Detailed Coffee Cups -->
+            <g transform="translate(70, 218)">
+              <g transform="translate(0, 0)" filter="url(#softShadow)">
+                <path d="M0,0 L20,0 L16,42 L4,42 Z" fill="#FAFAFA"/>
+                <path d="M2,18 L18,18 L17,32 L3,32 Z" fill="#A1887F"/> <!-- Sleeve -->
+                <rect x="-2" y="-4" width="24" height="5" rx="2" fill="#E0E0E0"/> <!-- Lid -->
+                <ellipse cx="10" cy="-4" rx="8" ry="2" fill="#F5F5F5"/>
+              </g>
+              <g transform="translate(35, 0)" filter="url(#softShadow)">
+                <path d="M0,0 L20,0 L16,42 L4,42 Z" fill="#FAFAFA"/>
+                <path d="M2,18 L18,18 L17,32 L3,32 Z" fill="#A1887F"/>
+                <rect x="-2" y="-4" width="24" height="5" rx="2" fill="#E0E0E0"/>
+                <ellipse cx="10" cy="-4" rx="8" ry="2" fill="#F5F5F5"/>
+              </g>
+              <g transform="translate(70, 0)" filter="url(#softShadow)">
+                <path d="M0,0 L20,0 L16,42 L4,42 Z" fill="#FAFAFA"/>
+                <path d="M2,18 L18,18 L17,32 L3,32 Z" fill="#A1887F"/>
+                <rect x="-2" y="-4" width="24" height="5" rx="2" fill="#E0E0E0"/>
+                <ellipse cx="10" cy="-4" rx="8" ry="2" fill="#F5F5F5"/>
+              </g>
+            </g>
+
+            <!-- Intricate Stainless Steel Espresso Machine -->
+            <g transform="translate(285, 140)" filter="url(#softShadow)">
+              <!-- Main Body -->
+              <rect x="0" y="20" width="200" height="100" rx="12" fill="url(#silverGrad)"/>
+              <rect x="10" y="10" width="180" height="12" rx="4" fill="#BDBDBD"/>
+              <!-- Group heads -->
+              <path d="M50,80 L60,110 L70,110 L80,80 Z" fill="#757575"/>
+              <path d="M120,80 L130,110 L140,110 L150,80 Z" fill="#757575"/>
+              <path d="M65,110 Q70,115 50,115" stroke="#424242" stroke-width="4" stroke-linecap="round" fill="none"/>
+              <path d="M135,110 Q140,115 120,115" stroke="#424242" stroke-width="4" stroke-linecap="round" fill="none"/>
+              <!-- Steam Wands -->
+              <path d="M25,80 Q15,100 20,115" stroke="url(#silverGrad)" stroke-width="4" stroke-linecap="round" fill="none"/>
+              <path d="M175,80 Q185,100 180,115" stroke="url(#silverGrad)" stroke-width="4" stroke-linecap="round" fill="none"/>
+              <!-- Control Panel -->
+              <rect x="20" y="30" width="160" height="35" rx="6" fill="#212121"/>
+              <!-- Gauges -->
+              <circle cx="45" cy="47" r="11" fill="#FAFAFA"/>
+              <circle cx="45" cy="47" r="9" fill="#EEEEEE"/>
+              <line x1="45" y1="47" x2="52" y2="42" stroke="#D32F2F" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="155" cy="47" r="11" fill="#FAFAFA"/>
+              <circle cx="155" cy="47" r="9" fill="#EEEEEE"/>
+              <line x1="155" y1="47" x2="148" y2="42" stroke="#D32F2F" stroke-width="2" stroke-linecap="round"/>
+              <!-- Dials & Knobs -->
+              <circle cx="85" cy="47" r="7" fill="url(#silverGrad)"/>
+              <circle cx="115" cy="47" r="7" fill="url(#silverGrad)"/>
+              <circle cx="100" cy="47" r="5" fill="#757575"/>
+              <!-- Indicator Lights (Red/Green) -->
+              <circle cx="65" cy="47" r="3" fill="#00E676" filter="url(#glow)"/>
+              <circle cx="135" cy="47" r="3" fill="#FF5252" filter="url(#glow)"/>
+              <!-- Base / Drip Tray -->
+              <rect x="5" y="120" width="190" height="15" rx="4" fill="#424242"/>
+              <rect x="15" y="115" width="170" height="5" fill="#9E9E9E"/>
+              <line x1="20" y1="117" x2="180" y2="117" stroke="#424242" stroke-width="1.5" stroke-dasharray="4,2"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="question-start">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>先來一個問題，開始今天的學習</h2>
+        <p>從經營風險切入，建立管理者的危機意識</p>
+      </div>
+      <div class="card reveal">
+        <h3>你知道將來咖啡廳也可能會被收碳費嗎？</h3>
+        <p>先用一個問題，快速檢查你現在的經營風險意識。</p>
+
+        <div class="choice-list">
+          <button class="choice-btn" onclick="homeQuestion('a')">
+            A. 只要現在還沒直接被收費，就不需要太早在意，等真的被規範再說
+          </button>
+
+          <button class="choice-btn" onclick="homeQuestion('b')">
+            B. 就算現在主要針對大型排放源，咖啡廳也應該提早建立碳成本概念，否則未來可能同時面對成本、品牌與營運壓力
+          </button>
+
+          <button class="choice-btn" onclick="homeQuestion('c')">
+            C. 碳費只是環保議題，和咖啡廳管理層真正要處理的採購、設備、包裝與營運決策沒有直接關係
+          </button>
+        </div>
+
+        <div id="homeFeedback" class="feedback"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>你會學到什麼？</h2>
+        <p>把複雜概念，拆成能直接判斷的內容</p>
+      </div>
+      <div class="grid-3">
+        <div class="card reveal">
+          <div class="icon-bubble">☕</div>
+          <h3>看見排放熱點</h3>
+          <p>快速辨識原料、配送、設備與包材的碳排來源。</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon-bubble">🌿</div>
+          <h3>理解碳成本</h3>
+          <p>用更直白的方式看懂排放量與模擬碳成本。</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon-bubble">📋</div>
+          <h3>做出管理選擇</h3>
+          <p>透過模擬互動，找到更適合店面的減碳方案。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>學習地圖</h2>
+        <p>正式學習活動共 4 個，教材介紹不列入活動</p>
+      </div>
+
+      <div class="grid-2">
+        <a class="card module-link reveal" href="why-carbon.html">
+          <div>
+            <h3>單元 1｜為什麼要減碳</h3>
+            <p>先看懂風險在哪裡。</p>
+          </div>
+          <span>→</span>
+        </a>
+
+        <a class="card module-link reveal" href="carbon-elements.html">
+          <div>
+            <h3>單元 2｜碳排元素</h3>
+            <p>找出店內外的排放熱點。</p>
+          </div>
+          <span>→</span>
+        </a>
+
+        <a class="card module-link reveal" href="carbon-basics.html">
+          <div>
+            <h3>單元 3｜基礎知識</h3>
+            <p>用拖曳分類建立概念。</p>
+          </div>
+          <span>→</span>
+        </a>
+
+        <a class="card module-link reveal" href="checklist.html">
+          <div>
+            <h3>單元 4｜店內營運選擇</h3>
+            <p>先確認店內營運選擇的費用。</p>
+          </div>
+          <span>→</span>
+        </a>
+
+        <a class="card module-link reveal" href="action-plan.html">
+          <div>
+            <h3>單元 5｜咖啡製作模擬</h3>
+            <p>用 700 元預算扣除單元四費用後，接續製作咖啡並計算回饋。</p>
+          </div>
+          <span>→</span>
+        </a>
+
+        <a class="card module-link reveal" href="about.html">
+          <div>
+            <h3>教材介紹</h3>
+            <p>查看補充說明。</p>
+          </div>
+          <span>→</span>
+        </a>
+      </div>
+
+      <div class="hero-actions" style="justify-content:center; margin-top:28px;">
+        <a class="btn btn-primary" href="why-carbon.html">進入學習</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p><strong>從種子到杯中，減碳在手中</strong></p>
+    <p>給咖啡廳管理層的互動式碳排學習平台。</p>
+    <p>本網站有使用 ChatGPT 工具製作。</p>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

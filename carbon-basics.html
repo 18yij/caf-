@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>基礎知識</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="carbon-basics">
+<header>
+  <div class="container navbar">
+    <a class="brand" href="index.html">從種子到杯中，減碳在手中</a>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">首頁</a>
+      <a href="why-carbon.html">為什麼要減碳</a>
+      <a href="carbon-elements.html">碳排元素</a>
+      <a href="carbon-basics.html">基礎知識</a>
+      <a href="checklist.html">店內營運選擇</a>
+      <a href="action-plan.html">咖啡製作模擬</a>
+      <a href="about.html">教材介紹</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>單元 3：基礎知識</h2>
+      <p>請將下方的咖啡廳營運項目拖曳到正確的碳排分類中，了解不同選擇可能產生的排放來源。</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card reveal">
+        <h3>什麼是碳排？</h3>
+        <p>簡單來說，就是咖啡廳在原料採購、製作、運輸、銷售與日常營運中產生的溫室氣體排放。</p>
+      </div>
+
+      <div class="card reveal">
+        <h3>為什麼管理者要懂？</h3>
+        <p>因為碳排會影響營運成本、品牌形象與未來法規壓力。越早理解排放來源，越能做出適合店內的減碳決策。</p>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="section-title">
+        <h2>互動挑戰 2：拖曳圖片分類</h2>
+        <p>電腦可拖曳；手機與平板可先點卡片，再點區塊。</p>
+      </div>
+
+      <div class="game-panel">
+        <div>
+          <div id="cardBank" class="dropzone bank-zone">
+            <h4>原始卡片區</h4>
+
+            <div class="draggable-list">
+              <div
+                class="draggable image-drag"
+                draggable="true"
+                data-type="原料"
+                data-name="咖啡豆"
+                data-track-answer
+                data-unit="單元三：基礎知識"
+                data-question-id="unit3_drag_coffee_beans"
+                data-question-title="咖啡豆屬於哪一種碳排分類？"
+                data-answer="原料"
+              >
+                🫘<br><span>咖啡豆</span>
+              </div>
+
+              <div
+                class="draggable image-drag"
+                draggable="true"
+                data-type="運輸"
+                data-name="配送貨車"
+                data-track-answer
+                data-unit="單元三：基礎知識"
+                data-question-id="unit3_drag_delivery_truck"
+                data-question-title="配送貨車屬於哪一種碳排分類？"
+                data-answer="運輸"
+              >
+                🚚<br><span>配送貨車</span>
+              </div>
+
+              <div
+                class="draggable image-drag"
+                draggable="true"
+                data-type="製作"
+                data-name="咖啡機"
+                data-track-answer
+                data-unit="單元三：基礎知識"
+                data-question-id="unit3_drag_coffee_machine"
+                data-question-title="咖啡機屬於哪一種碳排分類？"
+                data-answer="製作"
+              >
+                ☕<br><span>咖啡機</span>
+              </div>
+
+              <div
+                class="draggable image-drag"
+                draggable="true"
+                data-type="銷售"
+                data-name="外帶杯"
+                data-track-answer
+                data-unit="單元三：基礎知識"
+                data-question-id="unit3_drag_takeaway_cup"
+                data-question-title="外帶杯屬於哪一種碳排分類？"
+                data-answer="銷售"
+              >
+                🥤<br><span>外帶杯</span>
+              </div>
+
+              <div
+                class="draggable image-drag"
+                draggable="true"
+                data-type="製作"
+                data-name="冰箱"
+                data-track-answer
+                data-unit="單元三：基礎知識"
+                data-question-id="unit3_drag_fridge"
+                data-question-title="冰箱屬於哪一種碳排分類？"
+                data-answer="製作"
+              >
+                🗄️<br><span>冰箱</span>
+              </div>
+
+              <div
+                class="draggable image-drag"
+                draggable="true"
+                data-type="間接碳排"
+                data-name="員工通勤"
+                data-track-answer
+                data-unit="單元三：基礎知識"
+                data-question-id="unit3_drag_employee_commute"
+                data-question-title="員工通勤屬於哪一種碳排分類？"
+                data-answer="間接碳排"
+              >
+                🚌<br><span>員工通勤</span>
+              </div>
+
+              <div
+                class="draggable image-drag"
+                draggable="true"
+                data-type="製作"
+                data-name="冷氣"
+                data-track-answer
+                data-unit="單元三：基礎知識"
+                data-question-id="unit3_drag_air_conditioner"
+                data-question-title="冷氣屬於哪一種碳排分類？"
+                data-answer="製作"
+              >
+                ❄️<br><span>冷氣</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:10px"></div>
+
+          <div class="small-note">
+            想放回原本位置時，把卡片拖回「原始卡片區」即可；手機可先點卡片，再點「原始卡片區」。
+          </div>
+        </div>
+
+        <div class="dropzones">
+          <div class="dropzone" data-zone="原料">
+            <h4>原料</h4>
+          </div>
+
+          <div class="dropzone" data-zone="運輸">
+            <h4>運輸</h4>
+          </div>
+
+          <div class="dropzone" data-zone="製作">
+            <h4>製作</h4>
+          </div>
+
+          <div class="dropzone" data-zone="銷售">
+            <h4>銷售</h4>
+          </div>
+
+          <div class="dropzone" data-zone="間接碳排">
+            <h4>間接碳排</h4>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:12px"></div>
+
+      <div id="classificationFeedback" class="feedback">
+        請把圖片卡拖到你認為正確的分類裡。
+      </div>
+
+      <div style="height:12px"></div>
+
+      <button class="btn btn-primary" onclick="checkClassification()">檢查答案</button>
+      <button class="btn btn-secondary" onclick="resetClassification()">重新作答</button>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="checklist.html">下一頁：店內營運選擇</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p><strong>從種子到杯中，減碳在手中</strong></p>
+    <p>給咖啡廳管理層的互動式碳排學習平台。</p>
+    <p>本網站有使用 ChatGPT 工具製作。</p>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
