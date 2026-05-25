@@ -740,3 +740,62 @@ footer p{
   border:2px solid #df6b6b !important;
   color:#111 !important;
 }
+/* 單元四、單元五回饋表格樣式 */
+.feedback-intro {
+  margin: 0 0 16px;
+  line-height: 1.8;
+  color: #3d4a3d;
+}
+
+.feedback-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 18px 0 22px;
+  border-radius: 16px;
+  border: 1px solid rgba(49, 92, 66, 0.16);
+  background: #ffffff;
+}
+
+.feedback-table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.7;
+  background: #ffffff;
+}
+
+.feedback-table th,
+.feedback-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #e6ede3;
+  vertical-align: top;
+  text-align: left;
+}
+
+.feedback-table th {
+  background: #eef5eb;
+  color: #315c42;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.feedback-table tr:last-child td {
+  border-bottom: none;
+}
+
+.feedback-table td:nth-child(5),
+.feedback-table td:nth-child(6) {
+  font-weight: 800;
+  color: #315c42;
+  white-space: nowrap;
+}
+
+.feedback-summary {
+  margin: 18px 0;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(49, 92, 66, 0.16);
+  line-height: 1.9;
+}
