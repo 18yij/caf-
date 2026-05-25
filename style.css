@@ -1,801 +1,219 @@
-:root{
-  --bg:#f7f4ee;
-  --card:#fffdf9;
-  --brown:#6f4e37;
-  --green:#6f9f7a;
-  --green-dark:#4c7457;
-  --beige:#e7dccd;
-  --text:#2f2f2f;
-  --muted:#6b6b6b;
-  --shadow:0 10px 25px rgba(0,0,0,.08);
-  --radius:20px;
-}
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.7;
-}
-
-img{max-width:100%;display:block}
-a{text-decoration:none;color:inherit}
-.container{width:min(1120px,92%);margin:0 auto}
-
-header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:rgba(247,244,238,.92);
-  backdrop-filter: blur(10px);
-  border-bottom:1px solid rgba(0,0,0,.06);
-}
-
-.navbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:14px 0;
-  gap:20px;
-}
-
-.brand{
-  font-weight:800;
-  color:var(--brown);
-  font-size:1.05rem;
-}
-
-.nav-links{
-  display:flex;
-  gap:18px;
-  flex-wrap:wrap;
-}
-
-.nav-links a{
-  padding:8px 12px;
-  border-radius:999px;
-  color:var(--muted);
-  transition:.25s;
-}
-
-.nav-links a:hover,
-.nav-links a.active{
-  background:var(--beige);
-  color:var(--brown);
-}
-
-.menu-btn{
-  display:none;
-  background:#fff;
-  border:1px solid #e8ddcf;
-  padding:10px 12px;
-  border-radius:12px;
-  cursor:pointer;
-}
-
-.hero{padding:56px 0 42px}
-
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:28px;
-  align-items:center;
-}
-
-.badge{
-  display:inline-block;
-  background:#eef5ef;
-  color:var(--green-dark);
-  padding:6px 12px;
-  border-radius:999px;
-  font-size:.9rem;
-  font-weight:700;
-}
-
-.hero h1{
-  font-size:clamp(2rem,4.6vw,3.7rem);
-  line-height:1.15;
-  margin:16px 0 14px;
-  color:var(--brown);
-}
-
-.hero p{
-  color:var(--muted);
-  font-size:1.05rem;
-}
-
-.hero-actions{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:20px;
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:12px 18px;
-  border-radius:14px;
-  border:none;
-  cursor:pointer;
-  font-weight:700;
-  transition:.25s;
-  box-shadow:var(--shadow);
-  min-height:46px;
-}
-
-.btn-primary{
-  background:var(--green);
-  color:white;
-}
-
-.btn-primary:hover{
-  transform:translateY(-2px);
-  background:var(--green-dark);
-}
-
-.btn-secondary{
-  background:white;
-  color:var(--brown);
-}
-
-.btn-secondary:hover{
-  transform:translateY(-2px);
-  background:#fbf8f1;
-}
-
-.hero-card,.card{
-  background:var(--card);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-}
-
-.hero-card{padding:22px}
-
-.scene{
-  min-height:360px;
-  position:relative;
-  overflow:hidden;
-  background:linear-gradient(180deg,#f6ead8,#f1ddc2 50%,#ead0ae 100%);
-}
-
-.scene .wall{
-  position:absolute;
-  inset:0 0 28% 0;
-  background:linear-gradient(180deg,#fbf7ef,#f1e9dc);
-}
-
-.scene .floor{
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  height:28%;
-  background:repeating-linear-gradient(90deg,#c99e6f 0,#c99e6f 60px,#bc8e5f 60px,#bc8e5f 120px);
-}
-
-.scene .sign,
-.scene-game .sign{
-  position:absolute;
-  top:34px;
-  left:58%;
-  transform:translateX(-50%);
-  background:#fff8ea;
-  padding:14px 26px;
-  border-radius:18px;
-  box-shadow:var(--shadow);
-  font-weight:800;
-  color:var(--brown);
-  z-index:3;
-  text-align:center;
-  max-width:80%;
-}
-
-.obj{
-  position:absolute;
-  border-radius:18px;
-  box-shadow:var(--shadow);
-}
-
-.counter{left:8%;bottom:25%;width:54%;height:26%;background:#a76e4a}
-.machine{right:19%;bottom:42%;width:20%;height:18%;background:#5e5e5e}
-.fridge{right:6%;bottom:25%;width:12%;height:35%;background:#c9e8ef}
-.cups{left:14%;bottom:48%;width:13%;height:10%;background:#f6f0ea}
-.plant{left:74%;bottom:25%;width:10%;height:18%;background:#7ea57c}
-.light{top:100px;left:18%;width:10%;height:8%;background:#ffe69a}
-.light.two{left:70%}
-
-.section{padding:26px 0 54px}
-
-.section-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-bottom:20px;
-}
-
-.section-title h2{
-  margin:0;
-  color:var(--brown);
-  font-size:clamp(1.4rem,3vw,2.1rem);
-}
-
-.section-title p{
-  margin:0;
-  color:var(--muted);
-}
-
-.grid-3{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
-.grid-2{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px;
-}
-
-.card{padding:22px}
-
-.card h3{
-  margin-top:0;
-  color:var(--brown);
-}
-
-.card p,.card li{
-  color:var(--muted);
-}
-
-.icon-bubble{
-  width:48px;
-  height:48px;
-  border-radius:14px;
-  background:#eef5ef;
-  display:grid;
-  place-items:center;
-  font-size:1.4rem;
-  margin-bottom:12px;
-}
-
-.progress-wrap{
-  background:#eee3d5;
-  border-radius:999px;
-  height:14px;
-  overflow:hidden;
-}
-
-.progress-bar{
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg,var(--green),#90b98f);
-  transition:width .35s ease;
-}
-
-.small-note{
-  font-size:.95rem;
-  color:var(--muted);
-}
-
-.choice-list,.draggable-list,.dropzones{
-  display:grid;
-  gap:12px;
-}
-
-.choice-btn,.quiz-option{
-  width:100%;
-  text-align:left;
-  padding:14px 16px;
-  border-radius:14px;
-  border:1px solid #e9dfd3;
-  background:#fff;
-  cursor:pointer;
-  transition:.2s;
-  font-weight:700;
-  color:#4a4039;
-  font-size:1rem;
-}
-
-.choice-btn:hover,.quiz-option:hover{
-  background:#f9f6ef;
-  transform:translateY(-1px);
-}
-
-.feedback{
-  margin-top:14px;
-  padding:14px 16px;
-  border-radius:14px;
-  display:none;
-}
-
-.feedback.show{display:block}
-.feedback.ok{background:#eef8ef;color:#30553b}
-.feedback.bad{background:#fff2ef;color:#8a4334}
-
-.module-link{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-}
-
-.summary-box{
-  background:#eef5ef;
-  border:1px solid #cfe0d3;
-  border-radius:18px;
-  padding:18px;
-}
-
-.scene-game{
-  position:relative;
-  background:linear-gradient(180deg,#fbf5ea,#f0e1ca);
-  min-height:400px;
-  aspect-ratio:4/3;
-  border-radius:22px;
-  overflow:hidden;
-}
-
-.game-panel{
-  display:grid;
-  grid-template-columns:1.4fr 1fr;
-  gap:24px;
-}
-
-.info-box{
-  padding:24px;
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-  border-radius:18px;
-  background:#fff;
-  border:1px solid #ebdfd1;
-}
-
-.dropzone{
-  min-height:90px;
-  background:#fffaf4;
-  border:2px dashed #d8c6ad;
-  border-radius:16px;
-  padding:12px;
-  transition:.2s;
-}
-
-.dropzone.over{
-  background:#eef8ef;
-  border-color:#8cb792;
-}
-
-.dropzone.selected-zone{
-  background:#fff4c9;
-  border-color:#e7d98a;
-}
-
-.dropzone h4{
-  margin:0 0 8px;
-  color:var(--brown);
-}
-
-.score-chip{
-  display:inline-block;
-  padding:8px 12px;
-  background:#fff;
-  border-radius:999px;
-  border:1px solid #eadfce;
-  font-weight:700;
-}
-
-footer{
-  margin-top:40px;
-  background:#4d5f4f;
-  color:#f5f5f5;
-  padding:28px 0;
-}
-
-footer p{
-  margin:6px 0;
-  color:#f1eee8;
-}
-
-.reveal{
-  opacity:0;
-  transform:translateY(18px);
-  transition:.5s;
-}
-
-.reveal.show{
-  opacity:1;
-  transform:none;
-}
-
-.image-drag{
-  background:#fff;
-  border:1px solid #eadfce;
-  border-radius:18px;
-  padding:18px;
-  text-align:center;
-  font-size:2rem;
-  cursor:grab;
-  font-weight:700;
-  line-height:1.2;
-  transition:.2s;
-  user-select:none;
-}
-
-.image-drag span{
-  display:block;
-  font-size:1rem;
-  margin-top:8px;
-  color:#4a4039;
-}
-
-.image-drag.selected-drag{
-  background:#fff4c9;
-  border-color:#e7d98a;
-  transform:scale(1.02);
-}
-
-.scene-game .wall,
-.scene-game .floor,
-.scene-game .sign,
-.scene-game .obj{
-  pointer-events:none;
-}
-
-.scene-game .wall{
-  position:absolute;
-  inset:0 0 28% 0;
-  background:linear-gradient(180deg,#fbf7ef,#f1e9dc);
-  z-index:1;
-}
-
-.scene-game .floor{
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  height:28%;
-  background:repeating-linear-gradient(90deg,#c99e6f 0,#c99e6f 60px,#bc8e5f 60px,#bc8e5f 120px);
-  z-index:1;
-}
-
-.scene-game .obj{
-  z-index:2;
-  text-align:center;
-}
-
-.game-item{
-  position:absolute;
-  border:3px solid transparent;
-  border-radius:16px;
-  cursor:pointer;
-  transition:.2s;
-  z-index:10;
-}
-
-.game-item:hover{
-  border-color:#ffcf7d;
-  transform:scale(1.02);
-}
-
-.game-item.found{
-  border-color:#7aad83;
-  background:rgba(122,173,131,.18);
-}
-
-.step-box{margin-top:16px}
-
-.budget-result-box{
-  border-radius:18px;
-  padding:18px;
-  border:1px solid #e5ddd0;
-  color:#222 !important;
-}
-
-.budget-result-low{background:#e7f6e7}
-.budget-result-medium{background:#fff4c9}
-.budget-result-high{background:#fde8e8}
-
-.carbon-info-box{
-  transition:background .25s ease,border-color .25s ease;
-  color:#222 !important;
-  min-height:240px;
-  font-size:0.95rem;
-}
-
-.carbon-low{
-  background:#e7f6e7 !important;
-  border:1px solid #b9ddb9 !important;
-}
-
-.carbon-medium{
-  background:#fff4c9 !important;
-  border:1px solid #e7d98a !important;
-}
-
-.carbon-high{
-  background:#fde8e8 !important;
-  border:1px solid #efb9b9 !important;
-}
-
-/* 平板 */
-@media (max-width: 1024px){
-  .hero-grid,
-  .grid-3,
-  .grid-2,
-  .game-panel{
-    grid-template-columns:1fr;
-  }
-
-  .scene{
-    min-height:320px;
-  }
-
-  .scene-game{
-    min-height:360px;
-    max-height:50vh;
-  }
-
-  .section{
-    padding:22px 0 46px;
-  }
-}
-
-/* 手機 */
-@media (max-width: 768px){
-  .nav-links{
-    display:none;
-  }
-
-  .nav-links.open{
-    display:flex;
-    position:absolute;
-    top:68px;
-    left:4%;
-    right:4%;
-    background:#fff;
-    padding:14px;
-    border-radius:18px;
-    box-shadow:var(--shadow);
-    flex-direction:column;
-    z-index:1200;
-  }
-
-  .menu-btn{
-    display:block;
-  }
-
-  .hero{
-    padding:34px 0 24px;
-  }
-
-  .hero h1{
-    font-size:2rem;
-  }
-
-  .hero-actions,
-  .btn{
-    width:100%;
-  }
-
-  .hero-actions .btn{
-    width:100%;
-  }
-
-  .scene{
-    min-height:260px;
-  }
-
-  .scene-game{
-    min-height:320px;
-    max-height:45vh;
-  }
-
-  .scene .sign,
-  .scene-game .sign{
-    top:18px;
-    left:50%;
-    max-width:88%;
-    padding:10px 14px;
-    font-size:.9rem;
-  }
-
-  .card{
-    padding:16px;
-  }
-
-  .info-box{
-    padding:14px;
-  }
-
-  .choice-btn,
-  .quiz-option,
-  .btn{
-    font-size:.96rem;
-  }
-
-  .image-drag{
-    font-size:1.7rem;
-    padding:14px;
-  }
-
-  .image-drag span{
-    font-size:.95rem;
-  }
-
-  .dropzone{
-    min-height:82px;
-  }
-
-  .section-title{
-    align-items:flex-start;
-  }
-}
-
-/* 小手機 */
-@media (max-width: 480px){
-  .container{
-    width:min(94%,1120px);
-  }
-
-  .brand{
-    font-size:.95rem;
-  }
-
-  .hero h1{
-    font-size:1.8rem;
-  }
-
-  .scene{
-    min-height:230px;
-  }
-
-  .scene-game{
-    min-height:320px;
-  }
-
-  .score-chip{
-    font-size:.9rem;
-  }
-
-  .small-note{
-    font-size:.9rem;
-  }
-}
-.emission-low{
-  background:#eaf8ea !important;
-  border:2px solid #6fcf7a !important;
-  color:#111 !important;
-}
-
-.emission-medium{
-  background:#fff4cc !important;
-  border:2px solid #e0b93b !important;
-  color:#111 !important;
-}
-
-.emission-high{
-  background:#ffe3e3 !important;
-  border:2px solid #df6b6b !important;
-  color:#111 !important;
-}
-.choice-list{
-  display:grid;
-  gap:12px;
-}
-
-.choice-btn{
-  width:100%;
-  text-align:left;
-  border:2px solid #d9e5de;
-  background:#ffffff;
-  border-radius:16px;
-  padding:14px 16px;
-  cursor:pointer;
-  transition:.2s ease;
-  font-size:1rem;
-  line-height:1.5;
-  color:#1f2a24;
-  box-shadow:0 2px 8px rgba(0,0,0,.04);
-}
-
-.choice-btn:hover{
-  transform:translateY(-1px);
-  border-color:#97bca8;
-  background:#f6fbf8;
-}
-
-.choice-btn.selected-choice{
-  background:#cfe8d6 !important;
-  border:2px solid #5f9a70 !important;
-  color:#16301f !important;
-  font-weight:700;
-  box-shadow:0 4px 14px rgba(95,154,112,.18);
-}
-
-.choice-btn:active{
-  transform:scale(.99);
-}
-
-.emission-low{
-  background:#eaf8ea !important;
-  border:2px solid #6fcf7a !important;
-  color:#111 !important;
-}
-
-.emission-medium{
-  background:#fff4cc !important;
-  border:2px solid #e0b93b !important;
-  color:#111 !important;
-}
-
-.emission-high{
-  background:#ffe3e3 !important;
-  border:2px solid #df6b6b !important;
-  color:#111 !important;
-}
-/* 單元四、單元五回饋表格樣式 */
-.feedback-intro {
-  margin: 0 0 16px;
-  line-height: 1.8;
-  color: #3d4a3d;
-}
-
-.feedback-table-wrap {
-  width: 100%;
-  overflow-x: auto;
-  margin: 18px 0 22px;
-  border-radius: 16px;
-  border: 1px solid rgba(49, 92, 66, 0.16);
-  background: #ffffff;
-}
-
-.feedback-table {
-  width: 100%;
-  min-width: 900px;
-  border-collapse: collapse;
-  font-size: 14px;
-  line-height: 1.7;
-  background: #ffffff;
-}
-
-.feedback-table th,
-.feedback-table td {
-  padding: 12px 14px;
-  border-bottom: 1px solid #e6ede3;
-  vertical-align: top;
-  text-align: left;
-}
-
-.feedback-table th {
-  background: #eef5eb;
-  color: #315c42;
-  font-weight: 800;
-  white-space: nowrap;
-}
-
-.feedback-table tr:last-child td {
-  border-bottom: none;
-}
-
-.feedback-table td:nth-child(5),
-.feedback-table td:nth-child(6) {
-  font-weight: 800;
-  color: #315c42;
-  white-space: nowrap;
-}
-
-.feedback-summary {
-  margin: 18px 0;
-  padding: 16px 18px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(49, 92, 66, 0.16);
-  line-height: 1.9;
-}
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>基礎知識</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="carbon-basics">
+<header>
+  <div class="container navbar">
+    <a class="brand" href="index.html">從種子到杯中，減碳在手中</a>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">首頁</a>
+      <a href="why-carbon.html">為什麼要減碳</a>
+      <a href="carbon-elements.html">碳排元素</a>
+      <a href="carbon-basics.html">基礎知識</a>
+      <a href="checklist.html">店內營運選擇</a>
+      <a href="action-plan.html">咖啡製作模擬</a>
+      <a href="about.html">教材介紹</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>單元 3：基礎知識</h2>
+      <p>請將下方的咖啡廳營運項目拖曳到正確的碳排分類中，了解不同選擇可能產生的排放來源。</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card reveal">
+        <h3>什麼是碳排？</h3>
+        <p>簡單來說，就是咖啡廳在原料採購、製作、運輸、銷售與日常營運中產生的溫室氣體排放。</p>
+      </div>
+
+      <div class="card reveal">
+        <h3>為什麼管理者要懂？</h3>
+        <p>因為碳排會影響營運成本、品牌形象與未來法規壓力。越早理解排放來源，越能做出適合店內的減碳決策。</p>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="section-title">
+        <h2>互動挑戰 2：拖曳圖片分類</h2>
+        <p>電腦可拖曳；手機與平板可先點卡片，再點區塊。</p>
+      </div>
+
+      <div class="game-panel">
+        <div>
+          <div id="cardBank" class="dropzone bank-zone">
+            <h4>原始卡片區</h4>
+
+            <div class="draggable-list">
+              <div
+                class="draggable image-drag"
+                draggable="true"
+                data-type="原料"
+                data-name="咖啡豆"
+                data-track-answer
+                data-unit="單元三：基礎知識"
+                data-question-id="unit3_drag_coffee_beans"
+                data-question-title="咖啡豆屬於哪一種碳排分類？"
+                data-answer="原料"
+              >
+                🫘<br><span>咖啡豆</span>
+              </div>
+
+              <div
+                class="draggable image-drag"
+                draggable="true"
+                data-type="運輸"
+                data-name="配送貨車"
+                data-track-answer
+                data-unit="單元三：基礎知識"
+                data-question-id="unit3_drag_delivery_truck"
+                data-question-title="配送貨車屬於哪一種碳排分類？"
+                data-answer="運輸"
+              >
+                🚚<br><span>配送貨車</span>
+              </div>
+
+              <div
+                class="draggable image-drag"
+                draggable="true"
+                data-type="製作"
+                data-name="咖啡機"
+                data-track-answer
+                data-unit="單元三：基礎知識"
+                data-question-id="unit3_drag_coffee_machine"
+                data-question-title="咖啡機屬於哪一種碳排分類？"
+                data-answer="製作"
+              >
+                ☕<br><span>咖啡機</span>
+              </div>
+
+              <div
+                class="draggable image-drag"
+                draggable="true"
+                data-type="銷售"
+                data-name="外帶杯"
+                data-track-answer
+                data-unit="單元三：基礎知識"
+                data-question-id="unit3_drag_takeaway_cup"
+                data-question-title="外帶杯屬於哪一種碳排分類？"
+                data-answer="銷售"
+              >
+                🥤<br><span>外帶杯</span>
+              </div>
+
+              <div
+                class="draggable image-drag"
+                draggable="true"
+                data-type="製作"
+                data-name="冰箱"
+                data-track-answer
+                data-unit="單元三：基礎知識"
+                data-question-id="unit3_drag_fridge"
+                data-question-title="冰箱屬於哪一種碳排分類？"
+                data-answer="製作"
+              >
+                🗄️<br><span>冰箱</span>
+              </div>
+
+              <div
+                class="draggable image-drag"
+                draggable="true"
+                data-type="間接碳排"
+                data-name="員工通勤"
+                data-track-answer
+                data-unit="單元三：基礎知識"
+                data-question-id="unit3_drag_employee_commute"
+                data-question-title="員工通勤屬於哪一種碳排分類？"
+                data-answer="間接碳排"
+              >
+                🚌<br><span>員工通勤</span>
+              </div>
+
+              <div
+                class="draggable image-drag"
+                draggable="true"
+                data-type="製作"
+                data-name="冷氣"
+                data-track-answer
+                data-unit="單元三：基礎知識"
+                data-question-id="unit3_drag_air_conditioner"
+                data-question-title="冷氣屬於哪一種碳排分類？"
+                data-answer="製作"
+              >
+                ❄️<br><span>冷氣</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:10px"></div>
+
+          <div class="small-note">
+            想放回原本位置時，把卡片拖回「原始卡片區」即可；手機可先點卡片，再點「原始卡片區」。
+          </div>
+        </div>
+
+        <div class="dropzones">
+          <div class="dropzone" data-zone="原料">
+            <h4>原料</h4>
+          </div>
+
+          <div class="dropzone" data-zone="運輸">
+            <h4>運輸</h4>
+          </div>
+
+          <div class="dropzone" data-zone="製作">
+            <h4>製作</h4>
+          </div>
+
+          <div class="dropzone" data-zone="銷售">
+            <h4>銷售</h4>
+          </div>
+
+          <div class="dropzone" data-zone="間接碳排">
+            <h4>間接碳排</h4>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:12px"></div>
+
+      <div id="classificationFeedback" class="feedback">
+        請把圖片卡拖到你認為正確的分類裡。
+      </div>
+
+      <div style="height:12px"></div>
+
+      <button class="btn btn-primary" onclick="checkClassification()">檢查答案</button>
+      <button class="btn btn-secondary" onclick="resetClassification()">重新作答</button>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="checklist.html">下一頁：店內營運選擇</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p><strong>從種子到杯中，減碳在手中</strong></p>
+    <p>給咖啡廳管理層的互動式碳排學習平台。</p>
+    <p>本網站有使用 ChatGPT 工具製作。</p>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
