@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>咖啡減碳學習網站｜後台數據</title>
+  <style>
+    body { margin:0; font-family:"Noto Sans TC", Arial, sans-serif; background:#f4f6f2; color:#243024; }
+    header { padding:28px 40px; background:#315c42; color:white; }
+    header h1 { margin:0 0 8px; font-size:28px; }
+    header p { margin:0; opacity:.9; line-height:1.6; }
+    main { padding:32px 40px; max-width:1200px; margin:auto; }
+    .notice { padding:16px 18px; background:#fff8d8; border-left:5px solid #d6a500; border-radius:10px; margin-bottom:24px; line-height:1.7; }
+    .actions { margin-bottom:24px; display:flex; gap:12px; flex-wrap:wrap; }
+    button { border:0; border-radius:999px; padding:12px 18px; background:#315c42; color:white; font-size:15px; cursor:pointer; box-shadow:0 6px 18px rgba(0,0,0,.12); }
+    button:hover { opacity:.9; }
+    .grid { display:grid; grid-template-columns:repeat(4, minmax(160px, 1fr)); gap:16px; margin-bottom:28px; }
+    .card, section { background:white; border-radius:18px; box-shadow:0 8px 24px rgba(0,0,0,.08); }
+    .card { padding:20px; }
+    .card h2 { margin:0 0 8px; font-size:15px; color:#5b6b5b; font-weight:600; }
+    .number { font-size:32px; font-weight:800; color:#315c42; }
+    section { padding:24px; margin-bottom:24px; }
+    section h2 { margin:0 0 18px; font-size:22px; color:#243024; }
+    .sub-grid { display:grid; grid-template-columns:repeat(2, minmax(260px, 1fr)); gap:18px; }
+    .stat-box { border:1px solid #e2e8df; border-radius:16px; padding:18px; background:#fbfcfa; margin-bottom:18px; }
+    .stat-box h3 { margin:0 0 6px; font-size:17px; color:#315c42; }
+    .unit-name { display:inline-block; font-size:13px; color:#fff; background:#6fa878; padding:4px 10px; border-radius:999px; margin-bottom:10px; }
+    .question-title { margin:0 0 14px; font-weight:700; line-height:1.6; color:#243024; }
+    .bar-row { margin:14px 0; }
+    .bar-label { display:flex; justify-content:space-between; gap:12px; margin-bottom:6px; font-size:15px; line-height:1.5; }
+    .bar-label span:first-child { font-weight:600; }
+    .bar { height:16px; background:#e7ece4; border-radius:999px; overflow:hidden; }
+    .bar-fill { height:100%; width:0%; background:#6fa878; border-radius:999px; transition:width .4s ease; }
+    .loading, .empty { padding:20px; text-align:center; color:#666; line-height:1.7; }
+    .empty { text-align:left; padding:0; }
+    @media (max-width:900px){ .grid{grid-template-columns:repeat(2,1fr);} .sub-grid{grid-template-columns:1fr;} main{padding:24px 18px;} }
+    @media (max-width:560px){ .grid{grid-template-columns:1fr;} header{padding:24px 18px;} .bar-label{flex-direction:column; gap:2px;} }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>咖啡減碳學習網站｜後台數據</h1>
+    <p>統計使用裝置、瀏覽次數，以及每一個互動問題的選擇比例。</p>
+  </header>
+
+  <main>
+    <div class="notice">
+      這個頁面會讀取 Firebase Realtime Database 的資料並整理成統計結果。正式上架時，建議不要把這個後台頁公開放在 GitHub Pages。
+    </div>
+
+    <div class="actions">
+      <button onclick="location.reload()">重新整理資料</button>
+      <button id="exportCsvBtn">匯出互動統計 CSV</button>
+    </div>
+
+    <div id="loading" class="loading">正在讀取 Firebase 資料...</div>
+
+    <div id="dashboard" style="display:none;">
+      <div class="grid">
+        <div class="card"><h2>總紀錄數</h2><div class="number" id="totalRecords">0</div></div>
+        <div class="card"><h2>總瀏覽次數</h2><div class="number" id="pageViews">0</div></div>
+        <div class="card"><h2>互動作答數</h2><div class="number" id="interactionCount">0</div></div>
+        <div class="card"><h2>不重複訪客數</h2><div class="number" id="visitorCount">0</div></div>
+      </div>
+
+      <section>
+        <h2>使用裝置比例</h2>
+        <div id="deviceStats"></div>
+      </section>
+
+      <section>
+        <h2>各頁瀏覽次數</h2>
+        <div id="pageStats"></div>
+      </section>
+
+      <section>
+        <h2>每個互動問題選擇比例</h2>
+        <div id="interactionQuestionStats"></div>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAec3dWltv6PyHf2QbXHhPeG6AB_Lolcgc",
+      authDomain: "coffee-learning-55ad8.firebaseapp.com",
+      databaseURL: "https://coffee-learning-55ad8-default-rtdb.firebaseio.com",
+      projectId: "coffee-learning-55ad8",
+      storageBucket: "coffee-learning-55ad8.firebasestorage.app",
+      messagingSenderId: "621172962324",
+      appId: "1:621172962324:web:5fe7861ded0c6bb3bae301"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+    let latestCsvRows = [];
+
+    database.ref("coffeeCarbonRecords").on("value", snapshot => {
+      const data = snapshot.val() || {};
+      const records = Object.values(data);
+      document.getElementById("loading").style.display = "none";
+      document.getElementById("dashboard").style.display = "block";
+      renderDashboard(records);
+    }, error => {
+      document.getElementById("loading").textContent = "讀取失敗，請確認 Firebase Rules 是否允許讀取。";
+      console.error(error);
+    });
+
+    function renderDashboard(records) {
+      const pageViews = records.filter(r => r.eventType === "page_view");
+      const allInteractions = records.filter(r => r.eventType === "interaction_answer");
+      const interactions = getLatestAnswers(allInteractions);
+      const visitorIds = records.map(r => r.visitorId).filter(Boolean);
+      const uniqueVisitors = new Set(visitorIds).size;
+
+      document.getElementById("totalRecords").textContent = records.length;
+      document.getElementById("pageViews").textContent = pageViews.length;
+      document.getElementById("interactionCount").textContent = interactions.length;
+      document.getElementById("visitorCount").textContent = uniqueVisitors;
+
+      renderBarStats("deviceStats", countBy(records, "deviceType"));
+      renderBarStats("pageStats", countByPageName(pageViews));
+      renderInteractionQuestionStats(interactions);
+      buildCsvRows(interactions);
+    }
+
+    function getLatestAnswers(records) {
+      const map = new Map();
+      records.forEach(record => {
+        const visitor = record.visitorId || "anonymous";
+        const questionId = record.questionId || "unknown_question";
+        const key = visitor + "::" + questionId;
+        const time = Number(record.clientTime || record.timestamp || 0);
+        const old = map.get(key);
+        const oldTime = old ? Number(old.clientTime || old.timestamp || 0) : -1;
+        if (!old || time >= oldTime) map.set(key, record);
+      });
+      return Array.from(map.values());
+    }
+
+
+    function getPageDisplayName(page) {
+      const normalized = String(page || "").split("/").pop() || "index.html";
+      const pageNameMap = {
+        "index.html": "首頁",
+        "": "首頁",
+        "why-carbon.html": "單元一：為什麼要減碳",
+        "carbon-elements.html": "單元二：碳排元素",
+        "carbon-basics.html": "單元三：基礎知識",
+        "checklist.html": "單元四：店內營運選擇",
+        "action-plan.html": "單元五：咖啡製作模擬",
+        "about.html": "教材介紹",
+        "admin.html": "後台數據"
+      };
+
+      return pageNameMap[normalized] || normalized;
+    }
+
+    function countByPageName(records) {
+      return records.reduce((acc, record) => {
+        const key = getPageDisplayName(record.page);
+        acc[key] = (acc[key] || 0) + 1;
+        return acc;
+      }, {});
+    }
+
+    function countBy(records, fieldName) {
+      return records.reduce((acc, record) => {
+        const key = record[fieldName] || "未記錄";
+        acc[key] = (acc[key] || 0) + 1;
+        return acc;
+      }, {});
+    }
+
+    function renderBarStats(containerId, stats) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = "";
+      const entries = Object.entries(stats).filter(([label]) => label !== "未記錄");
+      const total = entries.reduce((sum, [, count]) => sum + count, 0);
+
+      if (!entries.length || !total) {
+        container.innerHTML = '<p class="empty">目前沒有可統計資料。</p>';
+        return;
+      }
+
+      entries.sort((a,b) => b[1]-a[1]).forEach(([label, count]) => {
+        const percent = total ? (count / total) * 100 : 0;
+        const row = document.createElement("div");
+        row.className = "bar-row";
+        row.innerHTML = `
+          <div class="bar-label"><span>${escapeHtml(label)}</span><span>${count} 筆｜${percent.toFixed(1)}%</span></div>
+          <div class="bar"><div class="bar-fill" style="width:${percent}%"></div></div>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    function renderInteractionQuestionStats(records) {
+      const container = document.getElementById("interactionQuestionStats");
+      container.innerHTML = "";
+
+      if (!records.length) {
+        container.innerHTML = '<p class="empty">目前還沒有互動問題資料。請先到前台點選互動題目。</p>';
+        return;
+      }
+
+      const groups = {};
+      records.forEach(record => {
+        const id = record.questionId || "unknown_question";
+        if (!groups[id]) {
+          groups[id] = {
+            unit: record.unit || "未分類單元",
+            questionTitle: record.questionTitle || "未命名問題",
+            answers: {}
+          };
+        }
+        const answer = record.answer || "未記錄答案";
+        groups[id].answers[answer] = (groups[id].answers[answer] || 0) + 1;
+      });
+
+      Object.entries(groups).forEach(([id, group]) => {
+        const box = document.createElement("div");
+        box.className = "stat-box";
+        const total = Object.values(group.answers).reduce((sum, count) => sum + count, 0);
+        let answerHtml = "";
+
+        Object.entries(group.answers).sort((a,b) => b[1]-a[1]).forEach(([answer, count]) => {
+          const percent = total ? (count / total) * 100 : 0;
+          answerHtml += `
+            <div class="bar-row">
+              <div class="bar-label"><span>${escapeHtml(answer)}</span><span>${count} 筆｜${percent.toFixed(1)}%</span></div>
+              <div class="bar"><div class="bar-fill" style="width:${percent}%"></div></div>
+            </div>
+          `;
+        });
+
+        box.innerHTML = `
+          <div class="unit-name">${escapeHtml(group.unit)}</div>
+          <p class="question-title">${escapeHtml(group.questionTitle)}</p>
+          ${answerHtml}
+        `;
+        container.appendChild(box);
+      });
+    }
+
+    function buildCsvRows(records) {
+      latestCsvRows = [["單元", "問題ID", "問題", "答案", "筆數", "比例"]];
+      const groups = {};
+      records.forEach(record => {
+        const id = record.questionId || "unknown_question";
+        if (!groups[id]) groups[id] = { unit: record.unit || "未分類單元", questionTitle: record.questionTitle || "未命名問題", answers: {} };
+        const answer = record.answer || "未記錄答案";
+        groups[id].answers[answer] = (groups[id].answers[answer] || 0) + 1;
+      });
+      Object.entries(groups).forEach(([id, group]) => {
+        const total = Object.values(group.answers).reduce((sum, count) => sum + count, 0);
+        Object.entries(group.answers).forEach(([answer, count]) => {
+          const percent = total ? (count / total) * 100 : 0;
+          latestCsvRows.push([group.unit, id, group.questionTitle, answer, count, `${percent.toFixed(1)}%`]);
+        });
+      });
+    }
+
+    document.getElementById("exportCsvBtn").addEventListener("click", () => {
+      if (latestCsvRows.length <= 1) {
+        alert("目前沒有互動統計可以匯出。");
+        return;
+      }
+      const csv = latestCsvRows.map(row => row.map(cell => `"${String(cell ?? "").replaceAll('"','""')}"`).join(",")).join("\n");
+      const blob = new Blob(["\uFEFF" + csv], { type:"text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "coffee-interaction-stats.csv";
+      link.click();
+      URL.revokeObjectURL(url);
+    });
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+  </script>
+</body>
+</html>
